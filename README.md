@@ -1,5 +1,5 @@
-# ip_to_country
-Rewrite of [https://github.com/jamesdolan/IPToCC-Live](IPToCC) with an emphesis on performance (~22000x faster!) and memory reduction (98% less!).
+# 🌎 ip_to_country
+Rewrite of [https://github.com/jamesdolan/IPToCC-Live](IPToCC) with an emphesis on performance (~22000x faster!) and memory reduction (98% less!), with no external dependencies and database thats updated nightly.
 
 Get ISO country code of IPv4/IPv6 address. Address lookup is done locally.
 
