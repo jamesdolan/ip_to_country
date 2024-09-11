@@ -3,6 +3,7 @@ Rewrite of [https://github.com/jamesdolan/IPToCC-Live](IPToCC) with an emphesis 
 
 Get ISO country code of IPv4/IPv6 address. Address lookup is done locally.
 
+[![Update](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jamesdolan/IPToCC-Live/blob/master/LICENSE)
 
 ## Features
