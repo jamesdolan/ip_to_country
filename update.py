@@ -1,4 +1,5 @@
-import os
+#!/usr/bin/env python3
+
 from array import array
 from ipaddress import IPv4Address
 from multiprocessing import Pool

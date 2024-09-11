@@ -15,20 +15,16 @@ class PerfScope:
         return self
 
     def __exit__(self, type, value, traceback):
-        self.time = time.perf_counter() - self.start
-        if self.count > 1:
-            self.readout = f'{self.name}: {self.time:.3f}s: {1000*self.time/self.count:.3f}ms per iteration'
-        else:
-            self.readout = f'{self.name}: {self.time:.3f}s'
+        delta = time.perf_counter() - self.start
+        self.readout = f'{self.name}: {delta:.4f}s'
         print(self.readout)
 
 if __name__ == "__main__":
     rnd = random.Random(457475)
     with PerfScope("Load") as _:
         ctx = Context()
-    test_count = 1000
-    with PerfScope("Lookup", test_count) as _:
-        for _ in range(test_count):
+    with PerfScope("Lookup") as _:
+        for _ in range(1000):
             ip = f"{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}"
             if cc := ctx.country_code(ip):
                 print(cc)
