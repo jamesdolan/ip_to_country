@@ -16,8 +16,6 @@ jobs:
     - uses: actions/setup-python@v5
       with:
         python-version: 3.9
-    - name: Install Requirements
-      run: pip install -r requirements.txt
     - name: Update Database
       run: python update.py
     - name: Benchmark test
