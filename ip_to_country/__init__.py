@@ -24,10 +24,10 @@ class Context:
         assert len(self.ipv4_end) == count
         assert len(self.ipv4_cc) == count * 2
     
-    def country_code(self, addr_str: str) -> Union[str, None]:
+    def country_code(self, addr_str: str, default_value: Union[str,None] = None) -> Union[str, None]:
         addr = int(ip_address(addr_str))
         next = bisect.bisect_right(self.ipv4_start, addr)
         prev = next-1
         if not next or self.ipv4_end[prev] <= addr:
-            return None
+            return default_value
         return self.ipv4_cc[prev*2:prev*2+2]
