@@ -18,8 +18,8 @@ class Context:
         self.ipv4_start = array.array("I")
         self.ipv4_count = array.array("I")
         self.ipv4_start.frombytes(data[:count*4])
-        self.ipv4_count.frombytes(data[count*4:count*4*2])
-        self.ipv4_cc = data[count*4*2:].decode("ascii")
+        self.ipv4_count.frombytes(data[count*4:count*8])
+        self.ipv4_cc = data[count*8:].decode("ascii")
         assert len(self.ipv4_start) == count
         assert len(self.ipv4_count) == count
         assert len(self.ipv4_cc) == count * 2
