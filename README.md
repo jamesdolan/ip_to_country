@@ -5,6 +5,9 @@ Rewrite of [IPToCC](https://github.com/roniemartinez/IPToCC) with an emphesis on
 [![Update](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jamesdolan/IPToCC-Live/blob/master/LICENSE)
 
+- [x] IPv4
+- [ ] IPv6 (TODO)
+
 ## Performance
 Measured on M3 MacBook Air with Python 3.9.6
 - Context creation: `ctx = ip_to_country.Context()` -> 0.0015s (vs IPToCC 5s)
