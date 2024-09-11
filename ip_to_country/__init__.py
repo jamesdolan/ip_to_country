@@ -26,7 +26,7 @@ class Context:
     
     def country_code(self, addr_str: str) -> Union[str, None]:
         addr = int(ip_address(addr_str))
-        next = bisect.bisect_left(self.ipv4_start, addr)
+        next = bisect.bisect_right(self.ipv4_start, addr)
         prev = next-1
         if not next or self.ipv4_start[prev]+self.ipv4_count[prev] <= addr:
             return None

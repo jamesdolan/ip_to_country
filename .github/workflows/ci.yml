@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Test:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+    - name: Install Requirements
+      run: |
+        pip install pytest mypy
+    - name: mypy
+      run: mypy .
+    - name: pytest
+      run: python -m pytest

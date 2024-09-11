@@ -15,18 +15,18 @@ SOURCE_URLS = [
     "https://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-extended-latest",
 ]
 
-def download_file(url: str) -> str:
+def download_file(url: str) -> list[tuple[int,int,str]]:
     print(f"Downloading {url}...")
     with urlopen(url) as response:
         data = response.read().decode("utf-8")
     print(f"Parsing {url}...")
     rows = [
-        [col.strip() for col in line.split("|")]
+        (col.strip() for col in line.split("|"))
         for line in data.splitlines()
         if not line.startswith('#')
     ]
     ipv4_rows = [
-        [int(IPv4Address(start)),int(value),cc]
+        (int(IPv4Address(start)),int(value),cc)
         for _,cc,type,start,value,*_ in rows
         if type == "ipv4" and len(cc) == 2
     ]
