@@ -10,9 +10,9 @@ Rewrite of [IPToCC](https://github.com/roniemartinez/IPToCC) with an emphesis on
 
 ## Performance
 Measured on M3 MacBook Air with Python 3.9.6
-- Context creation: `ctx = ip_to_country.Context()` -> 0.0015s (vs IPToCC 5s)
+- Context creation: `ctx = ip_to_country.Context()` -> 0.0015s (vs IPToCC 19.158s)
 - IP to Country Code: `cc = ctx.country_code(ip)` -> 0.0182ms (vs IPToCC 237.057ms)
-- Memory consumption: ~5.5MB (vs IPToCC 359MB)
+- Memory consumption: ~5.5MB (vs IPToCC 394MB)
 
 ## Features
 - [x] No external API call
