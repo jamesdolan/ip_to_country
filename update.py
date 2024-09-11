@@ -44,12 +44,12 @@ if __name__ == "__main__":
         key=lambda x: x[0]
     )
     ipv4_start = array("I", [
-        int(start)
+        start
         for start,_,_ in ipv4_rows
     ])
-    ipv4_counts = array("I", [
-        int(count)
-        for _,count,_ in ipv4_rows
+    ipv4_end = array("I", [
+        start+count
+        for start,count,_ in ipv4_rows
     ])
     ipv4_cc = "".join([
         cc
@@ -57,5 +57,5 @@ if __name__ == "__main__":
     ])
     with open(IPV4_PATH, "wb") as f:
         f.write(ipv4_start.tobytes())
-        f.write(ipv4_counts.tobytes())
+        f.write(ipv4_end.tobytes())
         f.write(ipv4_cc.encode("ascii"))
