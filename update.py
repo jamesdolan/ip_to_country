@@ -4,9 +4,7 @@ from ipaddress import IPv4Address
 from multiprocessing import Pool
 from urllib.request import urlopen
 
-WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-IPV4_PATH = os.path.join(WORKSPACE_DIR, "ip_to_country", "ipv4.bin")
+from ip_to_country import IPV4_PATH
 
 SOURCE_URLS = [
     "https://ftp.afrinic.net/stats/afrinic/delegated-afrinic-extended-latest",
