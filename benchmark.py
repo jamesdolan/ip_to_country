@@ -2,6 +2,7 @@
 
 import random
 import time
+import tracemalloc
 
 from ip_to_country import Context
 
@@ -21,12 +22,12 @@ class PerfScope:
 
 if __name__ == "__main__":
     rnd = random.Random(457475)
-    with PerfScope("Load") as _:
+    tracemalloc.start()
+    with PerfScope("Load Context") as _:
         ctx = Context()
-    with PerfScope("Lookup") as _:
+    with PerfScope("1000x Lookups") as _:
         for _ in range(1000):
             ip = f"{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}"
-            if cc := ctx.country_code(ip):
-                print(cc)
-            else:
-                print("??")
+            ctx.country_code(ip)
+    _, peak_memory = tracemalloc.get_traced_memory()
+    print(f"Peak memory usage: {peak_memory}")
