@@ -3,7 +3,7 @@ Rewrite of [IPToCC](https://github.com/roniemartinez/IPToCC) with an emphesis on
 
 [![CI](https://github.com/jamesdolan/ip_to_country/actions/workflows/ci.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/ci.yml)
 [![Update](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml)
-[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jamesdolan/IPToCC-Live/blob/master/LICENSE)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jamesdolan/ip_to_country/blob/master/LICENSE)
 
 ## Features
 - [x] No external API call

@@ -7,9 +7,8 @@ import tracemalloc
 from ip_to_country import Context
 
 class PerfScope:
-    def __init__(self, name, count=1):
+    def __init__(self, name):
         self.name = name
-        self.count = count
 
     def __enter__(self):
         self.start = time.perf_counter()
@@ -17,8 +16,7 @@ class PerfScope:
 
     def __exit__(self, type, value, traceback):
         delta = time.perf_counter() - self.start
-        self.readout = f'{self.name}: {delta:.4f}s'
-        print(self.readout)
+        print(f'{self.name}: {delta:.4f}s')
 
 if __name__ == "__main__":
     rnd = random.Random(457475)
