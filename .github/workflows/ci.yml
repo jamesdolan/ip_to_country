@@ -22,6 +22,6 @@ jobs:
     - name: mypy
       run: mypy .
     - name: pytest
-      run: python -m pytest
+      run: pytest
     - name: benchmark
       run: python benchmark.py

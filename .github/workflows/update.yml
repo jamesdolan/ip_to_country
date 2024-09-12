@@ -18,7 +18,9 @@ jobs:
         python-version: 3.9
     - name: Update Database
       run: python update.py
-    - name: Benchmark test
+    - name: pytest
+      run: pytest
+    - name: benchmark
       run: python benchmark.py
     - name: Commit
       shell: bash
