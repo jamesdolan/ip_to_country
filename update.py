@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from array import array
+from ctypes import c_uint32
 from ipaddress import IPv4Address
 from multiprocessing import Pool
 from urllib.request import urlopen
@@ -43,11 +44,11 @@ if __name__ == "__main__":
         ],
         key=lambda x: x[0]
     )
-    ipv4_start = array("I", [
+    ipv4_start = array(c_uint32._type_, [
         start
         for start,_,_ in ipv4_rows
     ])
-    ipv4_end = array("I", [
+    ipv4_end = array(c_uint32._type_, [
         start+count
         for start,count,_ in ipv4_rows
     ])

@@ -2,6 +2,7 @@
 
 import array
 import bisect
+import ctypes
 import os
 from ipaddress import ip_address
 from typing import Union
@@ -15,8 +16,8 @@ class Context:
             data = f.read()
         count = len(data) // 10
         assert count * 10 == len(data)
-        self.ipv4_start = array.array("I")
-        self.ipv4_end = array.array("I")
+        self.ipv4_start = array.array(ctypes.c_uint32._type_)
+        self.ipv4_end = array.array(ctypes.c_uint32._type_)
         self.ipv4_start.frombytes(data[:count*4])
         self.ipv4_end.frombytes(data[count*4:count*8])
         self.ipv4_cc = data[count*8:].decode("ascii")
