@@ -17,8 +17,7 @@ jobs:
       with:
         python-version: 3.9
     - name: Install Requirements
-      run: |
-        pip install pytest mypy
+      run: pip install pytest mypy
     - name: mypy
       run: mypy .
     - name: pytest
