@@ -1,5 +1,7 @@
 # 🌎 ip_to_country
-Rewrite of [IPToCC](https://github.com/roniemartinez/IPToCC) with an emphesis on performance (>10000x faster queries!) and memory reduction (99% less!), with no external dependencies and database that is updated nightly. Designed to be blazing fast on even the smallest VPS cloud instances.
+Rewrite of [IPToCC](https://github.com/roniemartinez/IPToCC) 2.x with an emphesis on performance (>10000x faster queries!) and memory reduction (99% less!), with no external dependencies and database that is updated nightly. Designed to be blazing fast on even the smallest VPS cloud instances.
+
+UPDATE: IPToCC 3.x is a complete rewrite in Rust, which is 25x faster than ip_to_country!
 
 [![CI](https://github.com/jamesdolan/ip_to_country/actions/workflows/ci.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/ci.yml)
 [![Update](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml/badge.svg)](https://github.com/jamesdolan/ip_to_country/actions/workflows/update.yml)
