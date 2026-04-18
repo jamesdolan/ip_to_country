@@ -17,9 +17,9 @@ UPDATE: IPToCC 3.x is a complete rewrite in Rust, which is 25x faster than ip_to
 
 ## Performance
 Measured on M3 MacBook Air with Python 3.9.6
-- Load database: `ctx = ip_to_country.Context()` -> 0.0006s (vs IPToCC 19.158s)
-- IP to Country Code: `cc = ctx.country_code(ip)` -> 0.0182ms (vs IPToCC 237.057ms)
-- Peak memory consumption: ~3MB (vs IPToCC 394MB)
+- Load database: `ctx = ip_to_country.Context()` -> 0.0003s (vs IPToCC 19.158s)
+- IP to Country Code: `cc = ctx.country_code(ip)` -> 0.0125ms (vs IPToCC 237.057ms)
+- Peak memory consumption: ~1.2MB (vs IPToCC 394MB)
 
 ## Install
 Install the latest version with the latest database...
