@@ -19,7 +19,9 @@ jobs:
     - name: Install Requirements
       run: pip install pytest
     - name: Update Database
-      run: python update.py
+      run: |
+        python update.py
+        python compact.py
     - name: pytest
       run: pytest
     - name: benchmark

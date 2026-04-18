@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import array
-import bisect
 import os
 import struct
+from bisect import bisect_right
 from ipaddress import IPv4Address
 from typing import Union
 
@@ -16,25 +16,22 @@ class Context:
     def __init__(self):
         with open(IPV4_PATH, "rb") as f:
             f_size = os.fstat(f.fileno()).st_size
-            count = f_size // 10
-            assert count * 10 == f_size
+            count = f_size // 6
+            assert count * 6 == f_size
             self.ipv4_start = array.array(IPV4_TYPECODE)
-            self.ipv4_end = array.array(IPV4_TYPECODE)
             self.ipv4_start.fromfile(f, count)
-            self.ipv4_end.fromfile(f, count)
             self.ipv4_cc = f.read(count*2).decode("ascii")
             assert len(self.ipv4_start) == count
-            assert len(self.ipv4_end) == count
             assert len(self.ipv4_cc) == count * 2
-    
+
     def country_code_v4(self, address: IPv4Address, default_value: Union[str,None] = None) -> Union[str, None]:
-        assert isinstance(address, IPv4Address)
         addr = int(address)
-        next = bisect.bisect_right(self.ipv4_start, addr)
-        prev = next-1
-        if not next or self.ipv4_end[prev] <= addr:
+        nxt = bisect_right(self.ipv4_start, addr)
+        if not nxt:
             return default_value
-        return self.ipv4_cc[prev*2:prev*2+2]
+        i = (nxt - 1) * 2
+        cc = self.ipv4_cc[i:i+2]
+        return default_value if cc == "??" else cc
 
     def country_code(self, address: str, default_value: Union[str,None] = None) -> Union[str, None]:
         return self.country_code_v4(IPv4Address(address), default_value)

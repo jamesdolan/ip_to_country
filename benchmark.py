@@ -3,6 +3,7 @@
 import random
 import time
 import tracemalloc
+from ipaddress import IPv4Address
 
 from ip_to_country import Context
 
@@ -25,7 +26,7 @@ if __name__ == "__main__":
         ctx = Context()
     with PerfScope("1000x Lookups") as _:
         for _ in range(1000):
-            ip = f"{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}.{rnd.randint(0,255)}"
-            ctx.country_code(ip)
+            addr = IPv4Address(rnd.getrandbits(32))
+            ctx.country_code_v4(addr)
     _, peak_memory = tracemalloc.get_traced_memory()
     print(f"Peak memory usage: {peak_memory}")

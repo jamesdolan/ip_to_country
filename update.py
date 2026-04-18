@@ -43,19 +43,19 @@ if __name__ == "__main__":
         ],
         key=lambda x: x[0]
     )
-    ipv4_start = array(IPV4_TYPECODE, [
-        start
-        for start,_,_ in ipv4_rows
-    ])
-    ipv4_end = array(IPV4_TYPECODE, [
-        start+count
-        for start,count,_ in ipv4_rows
-    ])
-    ipv4_cc = "".join([
-        cc
-        for _,_,cc in ipv4_rows
-    ])
+    filled: list[tuple[int, int, str]] = []
+    for start, count, cc in ipv4_rows:
+        if filled:
+            prev_end = filled[-1][0] + filled[-1][1]
+            if prev_end < start:
+                filled.append((prev_end, start - prev_end, "??"))
+        filled.append((start, count, cc))
+    if filled:
+        last_end = filled[-1][0] + filled[-1][1]
+        filled.append((last_end, 0, "??"))
+
+    ipv4_start = array(IPV4_TYPECODE, [start for start,_,_ in filled])
+    ipv4_cc = "".join(cc for _,_,cc in filled)
     with open(IPV4_PATH, "wb") as f:
         f.write(ipv4_start.tobytes())
-        f.write(ipv4_end.tobytes())
         f.write(ipv4_cc.encode("ascii"))
